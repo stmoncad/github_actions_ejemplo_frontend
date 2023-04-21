@@ -73,7 +73,7 @@ jobs:
           name: cashify-${{ env.cashify-version }}
       - name: Unzip artefacto
         run: |
-          unzip dist.zip .
+          unzip dist.zip -d .
           rm dist.zip
       - name: Desplegar artefacto en S3 dev
         run: aws s3 cp . s3://${{ secrets.AWS_S3_DEV }} -recursive
