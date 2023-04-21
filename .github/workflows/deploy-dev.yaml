@@ -50,7 +50,8 @@ jobs:
         run: npm run build
       - name: Generar archivo zip
         run: |
-          zip ../dist.zip .
+          ls ..
+          zip -r ../dist.zip ../dist
       - name: Guardar artefacto
         uses: actions/upload-artifact@v3
         with:
