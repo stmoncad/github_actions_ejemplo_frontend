@@ -10,7 +10,6 @@ env:
 
 jobs:
   test:
-    name: Testing
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -28,7 +27,3 @@ jobs:
         run: npm i
       - name: Test unitarios
         run: npm run test:prod
-      - name: Reporte code coverage
-        uses: irongut/CodeCoverageSummary@v1.3.0
-        with:
-          filename: coverage.cobertura.xml
