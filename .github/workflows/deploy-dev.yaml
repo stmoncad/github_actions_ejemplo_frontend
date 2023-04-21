@@ -25,8 +25,8 @@ jobs:
       - name: Test unitarios
         run: |
           npm ci
-          npm run test
-          npm run lint
+          ng test --browsers=ChromeHeadless --watch=false --code-coverage
+          ng lint
       - name: Reporte code coverage
         uses: irongut/CodeCoverageSummary@v1.3.0
         with:
