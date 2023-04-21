@@ -7,6 +7,7 @@ on:
 env:
   node-version: 18.16.0
   angular-version: 12.2.18
+  cashify-version: 0.0.1
 
 jobs:
   test:
@@ -47,4 +48,14 @@ jobs:
           npm i
       - name: Build proyecto Angular
         run: npm run build
+      - name: Generar archivo zip
+        run: |
+          zip ../dist.zip .
+      - name: Guardar artefacto
+        uses: actions/upload-artifact@v3
+        with:
+          name: cashify-${{ env.cashify-version }}
+          path: dist.zip
+  
+  
       
