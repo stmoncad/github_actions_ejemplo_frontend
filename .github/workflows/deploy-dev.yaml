@@ -17,7 +17,7 @@ jobs:
       - name: Instalar node.js
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ node-version }}
+          node-version: ${{ env.node-version }}
       - name: Instalar paquetes
         run: |
           npm i @angular/cli@$angular-version
