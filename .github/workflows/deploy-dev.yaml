@@ -6,7 +6,7 @@ on:
 
 env:
   node-version: 18.16.0
-  angular-version: 15.2.6
+  angular-version: 12.2.18
 
 jobs:
   test:
