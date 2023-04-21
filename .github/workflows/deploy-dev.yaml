@@ -16,7 +16,7 @@ jobs:
           node-version: 18.16.0
       - name: Instalar paquetes
         run: |
-          npm i @angular/cli:15.2.6
+          npm i @angular/cli@15.2.6
           npm i
       - name: Test unitarios
         run: npm run ng test
