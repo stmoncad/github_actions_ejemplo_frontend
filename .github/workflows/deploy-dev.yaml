@@ -29,7 +29,9 @@ jobs:
       - name: Test unitarios
         run: npm run test:prod
       - name: Calidad de código
-        run: npm run lint
+        run: |
+          ng add @angular-eslint/schematics
+          npm run lint
       - name: Reporte code coverage
         uses: irongut/CodeCoverageSummary@v1.3.0
         with:
