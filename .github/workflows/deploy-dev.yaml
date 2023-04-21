@@ -15,7 +15,9 @@ jobs:
         with:
           node-version: 18.16.0
       - name: Instalar paquetes
-        run: npm i
+        run: |
+          npm i @angular/cli:15.2.6
+          npm i
       - name: Test unitarios
         run: npm run ng test
       - name: Reporte code coverage
