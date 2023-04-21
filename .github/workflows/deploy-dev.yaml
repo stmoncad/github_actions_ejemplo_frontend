@@ -20,7 +20,7 @@ jobs:
           node-version: ${{ env.node-version }}
       - name: Instalar paquetes
         run: |
-          npm i @angular/cli@$angular-version
+          npm i @angular/cli@${{ env.angular-version }}
           npm i
       - name: Test unitarios
         run: |
