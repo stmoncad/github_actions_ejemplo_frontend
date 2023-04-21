@@ -9,7 +9,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "build:prod": "ng build --prod",
-    "test:prod": "ng test --browsers=ChromeHeadless --code-coverage --watch=false"
+    "test:prod": "ng test --browsers=ChromeHeadless --watch=false"
   },
   "private": true,
   "dependencies": {
