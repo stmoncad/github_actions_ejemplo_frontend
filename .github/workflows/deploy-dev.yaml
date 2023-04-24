@@ -76,6 +76,6 @@ jobs:
         with:
           args: unzip -qq dist.zip -d .
       - name: Desplegar artefacto en S3 dev
-        run: aws s3 cp ./dist/cashify/. s3://${{ secrets.AWS_S3_DEV }} -recursive
+        run: aws s3 cp ./dist/cashify/. s3://${{ secrets.AWS_S3_DEV }} --recursive
   
       
