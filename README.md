@@ -1,11 +1,11 @@
 # Introducción a GitHub Actions
 
-En el presente repositorio, se presenta un ejemplo de desarrollo frontend. El objetivo es la construcción de dos pipelines con GitHub Actons para la automatización en ambientes `dev` (GitHub Runners) y `prod` (Self-hosted Runner).
+En el presente repositorio, se presenta un ejemplo de desarrollo frontend. El objetivo es la construcción de dos pipelines con GitHub Actions para la automatización en ambientes `dev` (GitHub Runners) y `prod` (Self-hosted Runner).
 
 Para la construcción y ejecución de los pipelines, debes crear un __fork__ de este repositorio y trabajar sobre la rama _feature/login_. Si deseas consultar el __resultado final__ del pipeline que construiremos, puedes apoyarte en la rama _solution_.
 
 
-<details id=0 open>
+<details id=0>
 <summary>Despliegue DEV</summary>
 
 Para el ambiente `dev` se aplicará un enfoque tradicional de automatización para desarrollos __Open Source__. Es decir, construiremos un pipeline cuyo runner base proviene de la base de GitHub (__Ubuntu__, Windows o MacOS). Adicional, aplicaremos variables de entorno locales de los pipelines y globales en todo el repositorio GitHub. El presente despliegue se divide en la siguiente estructura ("Jobs").
