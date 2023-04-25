@@ -1,0 +1,82 @@
+name: desplegar front en dev
+on:
+  push:
+    branches:
+      - feature/*
+
+env:
+  node-version: 18.16.0
+  angular-version: 12.2.18
+  cashify-version: 0.0.1
+  s3-bucket: cashify-dev
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: src
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Instalar node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.node-version }}
+      - name: Instalar Angular
+        run: npm i @angular/cli@${{ env.angular-version }}
+      - name: Instalar paquetes
+        run: npm i
+      - name: Test unitarios
+        run: npm run test:prod
+  
+  build:
+    runs-on: ubuntu-latest
+    needs: test
+    defaults:
+      run:
+        working-directory: src
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Instalar node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.node-version }}
+      - name: Instalar Angular y dependencias
+        run: |
+          npm i @angular/cli@${{ env.angular-version }}
+          npm i
+      - name: Build proyecto Angular
+        run: npm run build
+      - name: Generar archivo zip
+        run: |
+          zip -r ../dist.zip ../dist
+      - name: Guardar artefacto
+        uses: actions/upload-artifact@v3
+        with:
+          name: cashify-${{ env.cashify-version }}
+          path: dist.zip
+
+  deploy: 
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Configurar credenciales de AWS
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+      - name: Descargar artefacto
+        uses: actions/download-artifact@v3
+        with:
+          name: cashify-${{ env.cashify-version }}
+      - name: Unzip artefacto
+        uses: montudor/action-zip@v1
+        with:
+          args: unzip -qq dist.zip -d .
+      - name: Desplegar artefacto en S3 dev
+        run: aws s3 cp ./dist/cashify/. s3://${{ env.s3-bucket }} --recursive
+  
+      
