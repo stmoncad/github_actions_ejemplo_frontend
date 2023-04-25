@@ -207,6 +207,6 @@ Lo primero que se debe hacer es crear el runner desde el repositorio/fork en Git
 Al crear un nuevo runner, se mostrará una lista de comandos a correr en la terminal del servicio EC2 para que se configure como un _self-hosted runner_ de GitHub y poder ser utilizado dentro de los pipelines de GitHub Actions. Dichos pasos se pueden apreciar en la Figura 9.
 
 ![](./imgs/runners.PNG)
-<p style="text-align:center"><i>Figura 8.</i> Settings.</p>
+<p style="text-align:center"><i>Figura 9.</i> Configuración del runner.</p>
 
 </details>
