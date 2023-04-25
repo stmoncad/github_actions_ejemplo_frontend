@@ -5,7 +5,7 @@ En el presente repositorio, se presenta un ejemplo de desarrollo frontend. El ob
 Para la construcción y ejecución de los pipelines, debes crear un __fork__ de este repositorio y trabajar sobre la rama _feature/login_. Si deseas consultar el __resultado final__ del pipeline que construiremos, puedes apoyarte en la rama _solution_.
 
 
-<details id=0 open>
+<details id=0>
 <summary>Despliegue DEV</summary>
 
 Para el ambiente `dev` se aplicará un enfoque tradicional de automatización para desarrollos __Open Source__. Es decir, construiremos un pipeline cuyo runner base proviene de la base de GitHub (__Ubuntu__, Windows o MacOS). Adicional, aplicaremos variables de entorno locales de los pipelines y globales en todo el repositorio GitHub. El presente despliegue se divide en la siguiente estructura ("Jobs").
@@ -193,7 +193,20 @@ deploy:
 
 </details>
 
-<details id=3>
+<details id=3 open>
 <summary>Despliegue PROD</summary>
+
+El ambiente `prod` emplea un enfoque de desarrollo __InnerSource__. Es decir, el pipeline se ejecuta dentro de una máquina virtual personalizada (EC2 en AWS) que puede estar conectado con las configuraciones de seguridad y de red (VPC/subnets y VPN). El primer paso consiste en configurar el runner de GitHub con la instancia de servidor EC2. Una vez configurado el runner, los pasos siguientes serían muy similares a la del despliegue `dev`; con la diferencia de que ya no es necesario evaluar la calidad de código, dado que ya ha sido cubierto desde el despliegue anterior.
+
+### 1. Self-hosted Runner
+Lo primero que se debe hacer es crear el runner desde el repositorio/fork en GitHub (sección de _settings_), como se muestra en la Figura 8.
+
+![](./imgs/new-runner.PNG)
+<p style="text-align:center"><i>Figura 8.</i> Settings.</p>
+
+Al crear un nuevo runner, se mostrará una lista de comandos a correr en la terminal del servicio EC2 para que se configure como un _self-hosted runner_ de GitHub y poder ser utilizado dentro de los pipelines de GitHub Actions. Dichos pasos se pueden apreciar en la Figura 9.
+
+![](./imgs/runners.PNG)
+<p style="text-align:center"><i>Figura 8.</i> Settings.</p>
 
 </details>
