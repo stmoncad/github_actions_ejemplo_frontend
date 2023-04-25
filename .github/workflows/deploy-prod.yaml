@@ -5,7 +5,6 @@ on:
       - main
 
 env:
-  env:
   node-version: 18.16.0
   angular-version: 12.2.18
   cashify-version: 0.0.1
