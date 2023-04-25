@@ -42,6 +42,7 @@ jobs:
   
   deploy:
     runs-on: ${{ env.cashify-runner }}
+    needs: build
     steps:
       - name: AWS Connect
         uses: aws-actions/configure-aws-credentials@v2
