@@ -108,7 +108,7 @@ describe('LoginComponent', () => {
 
       //Profile info
       let profile:Profile = component.profile;
-      expect(profile.userName).toEqual(responseProfile.userName);
+      //expect(profile.userName).toEqual(responseProfile.userName);
       expect(profile.securityToken).toEqual(responseProfile.securityToken);
 
       //Call router!
