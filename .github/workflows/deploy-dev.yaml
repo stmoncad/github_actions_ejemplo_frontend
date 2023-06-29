@@ -22,7 +22,7 @@ jobs:
     - name: Install Node.js
       uses: actions/setup-node@v3
       with:
-      node-version: ${{ env.node-version }}
+        node-version: ${{ env.node-version }}
     - name: Install angular
       run: npm i @angular/cli@${{ env.angular-version }}
     - name: Install dependencies
@@ -75,3 +75,5 @@ jobs:
         args: unzip -qq dist.zip d
     - name: desplegar en s3
       run: aws s3 cp ../dist/cashify/. s3://{env.s3-bucket} --recursive
+
+    - name: desplegar en s3
