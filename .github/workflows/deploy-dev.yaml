@@ -75,5 +75,3 @@ jobs:
         args: unzip -qq dist.zip d
     - name: desplegar en s3
       run: aws s3 cp ../dist/cashify/. s3://{env.s3-bucket} --recursive
-
-    - name: desplegar en s3
